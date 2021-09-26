@@ -32,4 +32,19 @@ No Ganache, na aba *Contracts* deve adicionar o caminho do *truffle-config.js*
 
 Para sair deste ambiente basta digitar *Ctrl C* duas vezes
 
+## Modificar o contrato e reenviar
 
+        //Após modificado o contrato
+        $ truffle migrate --network development --reset
+        //Com o reset o contrato receberá um novo endereço.
+        $ truffle console --network development
+
+        truffle(development)> let storage = await SimpleStorage.deployed()
+        truffle(development)> storage.set(42)
+        truffle(development)> (await storage.get()).toNumber()
+        truffle(development)> storage.increment(411)
+        truffle(development)> (await storage.get()).toNumber()
+
+Além da aba *Transactions*, agora é possível observar os eventos na aba *Events*.
+
+Explorar o GUI e a interação com o contrato.
